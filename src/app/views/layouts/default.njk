@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include "partials/head.njk" %}
+  <body>
+    <div class="div-main"></div>
+      <div class="div-bg">
+        <div class="div-content">
+          {% block body %}
+          {% endblock %}
+         </div>
+        </div>
+    </div>
+  </body>
+</html>

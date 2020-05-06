@@ -1,0 +1,13 @@
+{% extends "layouts/default.njk" %}
+{% block body %}
+  <form action="/signin" method="post">
+
+    <input type="email" name="email" placeholder="Seu e-mail" />
+    <input type="password" name="password" placeholder="Sua senha" />
+
+    <button type="submit">Logar</button>
+
+    <a href="/signup">Criar uma conta</a>
+  </form>
+
+{% endblock %}
