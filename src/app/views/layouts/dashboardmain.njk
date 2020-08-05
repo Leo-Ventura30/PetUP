@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% include "partials/dashboardhead.njk" %}
+  <body>
+    <div class="div-dashboard"><header class="header">
+  <div></div>
+</header>
+<nav id="navlateral">
+  <div class="content">
+    <div id="imgcontent">
+      <label onclick="togglePopup()" for="popup-1">
+        <img src="/img/{{avatar}}" />
+      </label>
+    
+    </div>
+    
+    <div id="namecontent">
+      <label class="lbltext">Bem-vindo(a) </label>
+      <br />
+      <label class="lblname">{{ name }}</label>
+      <a href="/dashboard/logout">
+        <img src="/img/signout.svg" alt="sair" />
+        <span>SAIR</span>
+      </a>
+    </div>
+    <div class="space"></div>
+    <div id="optionscontent">
+      <ul>
+        <li>
+          <a href="/dashboard/home">
+            <label><img src="/img/home.svg" alt="home" /></label>
+            <label class="lblitem">HOME</label> 
+            <span>HOME</span> 
+          </a>
+          
+        </li>
+        <div id="space" class="space"></div>
+        <li>
+          <a href="/dashboard/home/schedules">
+            <label><img src="/img/calendarBlue.svg" alt="agenda" /></label>
+            <label class="lblitem">AGENDA</label>
+            <span>AGENDA</span>
+          </a>
+        </li>
+        <div id="space" class="space"></div>
+        <li>
+          <label><img src="/img/invoice.svg" alt="renda" /></label>
+          <label class="lblitem">RENDA</label>
+          <span>RENDA</span>
+        </li>
+        <div id="space" class="space"></div>
+        <li>
+          <label><img src="/img/config.svg" alt="perfil" /></label>
+          <label class="lblitem">PERFIL</label>
+          <span>PERFIL</span>
+        </li>
+        <div id="space" class="space"></div>
+      </ul>
+    </div>
+    <div class="divbutton">
+      <div id="contentbutton">
+        <div><img src="/img/arrow.svg" /></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+       {% block body %}{% endblock %}
+    </div>
+    </div>
+  </body>
+</html>
+<script src="/scripts/script.js"></script>

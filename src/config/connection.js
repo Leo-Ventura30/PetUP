@@ -1,8 +1,9 @@
+const path = require("path");
 module.exports = {
   dialect: "postgres",
-  host: "127.0.0.1",
+  host: "192.168.15.32",
   username: "postgres",
-  password: "docker",
+  password: "2585Leo",
   database: "postgres",
   operatorAliases: false,
   define: {

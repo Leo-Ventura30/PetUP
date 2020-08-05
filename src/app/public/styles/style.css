@@ -1,31 +1,41 @@
 * {
   font-family: "Roboto Mono", monospace;
 }
+html,
 body {
-  min-height: 99.3vh;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
   background: linear-gradient(rgb(60, 4, 245), rgba(127, 226, 213, 0.822));
-  margin: 3px;
 }
-
+.form-login-signup,
 .form-login {
   width: 400px;
-  height: 450px;
-  padding: 80px 40px;
+  height: 500px;
+  padding: 55px 40px;
+
   border-radius: 10px;
-  margin: 40px 50px;
+  margin: 0px 50px;
   background-color: rgba(255, 255, 255, 0.6);
   border-top: 5px solid rgb(113, 203, 245);
   border-left: 5px solid rgb(88, 189, 236);
   position: absolute;
   left: 50%;
-  top: 40%;
-  transform: translate(-50%, -50%);
+  top: 45%;
+  transform: translate(-50%, -45%);
 }
+
+.form-login-signup {
+  width: 400px;
+  height: 555px;
+}
+
 .form-input {
   margin: 30px 0;
   position: relative;
   border-bottom: 3px solid #adadaa;
 }
+
 .form-input input {
   font-size: 20px;
   color: #3a3838;
@@ -33,7 +43,6 @@ body {
   width: 100%;
   outline: none;
   background: none;
-  margin-bottom: 10px;
   padding: 0 5px;
   height: 40px;
 }
@@ -52,7 +61,7 @@ body {
   position: absolute;
   width: 0%;
   height: 2px;
-  background: linear-gradient(120deg, #3fc3e4, #263eaa);
+  background: linear-gradient(110deg, #62f08d, #0761e7);
   transition: 0.5s;
 }
 .focus + span::before {
@@ -61,12 +70,27 @@ body {
 .focus + span::after {
   width: 100%;
 }
+.form-login-signup h1,
 .form-login h1 {
   text-align: center;
-  margin-bottom: 70px;
-  margin-top: 0px;
+  margin-bottom: 40px;
+  margin-top: -50px;
   font-weight: 900 bold;
   color: rgb(112, 111, 111);
+}
+.form-login-signup a,
+.form-login a {
+  text-decoration: none;
+  font-size: 18px;
+}
+.form-login-signup a:hover,
+.form-login a:hover {
+  text-decoration: none;
+  font-size: 18px;
+  color: #99a7e5;
+  border-radius: 5px;
+  border-top: 1px solid #99a7e5;
+  border-bottom: 1px solid #99a7e5;
 }
 
 .form-input button {
@@ -76,9 +100,9 @@ body {
 }
 
 .dog-svg {
-  margin-right: 30px;
+  margin-right: 20px;
   width: 150px;
-  height: 120px;
+  height: 150px;
 }
 
 .btn-log {
@@ -93,12 +117,19 @@ body {
   cursor: pointer;
   transition: 0.5s;
   border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 input[type="checkbox"] {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-right: 0;
   padding-right: 10px;
 }
+
+.alert p {
+  width: 100%;
+}
+
 .btn-log:hover {
   scale: (1.2);
   background-position: right;

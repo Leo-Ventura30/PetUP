@@ -1,0 +1,51 @@
+{% extends "layouts/default.njk" %} {% block body %}
+<title>Cadastro | PetUP</title>
+<div class="div-signup">
+  <form class="form-login-signup" action="/signup/create" method="POST">
+    <h1 class="text-log">
+      <img class="dog-svg" src="img/pet.svg" />
+      | Cadastro
+    </h1>
+    <div class="form-input">
+      <input type="text" name="name" id="name" required />
+      <span data-placeholder="Nome"></span>
+    </div>
+    <div class="form-input">
+      <input type="text" name="user" id="user" required />
+      <span data-placeholder="Usuário"></span>
+    </div>
+    <div class="form-input">
+      <input type="password" min="5" name="password" id="password" required />
+      <span data-placeholder="Senha"></span>
+    </div>
+
+    <input id="showPass" onclick="viewPassword()" type="checkbox" />
+    <label class="label-eye" for="showPass">Mostrar senha</label>
+
+    <input type="submit" id="btn-log" class="btn-log" value="Criar conta" />
+    <a href="/">Já passuo cadastro</a>
+    <script
+      charset="UTF-8"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    ></script>
+  </form>
+</div>
+
+<script>
+  $(".form-input input").on("focus", function () {
+    $(this).addClass("focus");
+  });
+  $(".form-input input").on("blur", function () {
+    if ($(this).val() == "") $(this).removeClass("focus");
+  });
+
+  function viewPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
+{% endblock %}

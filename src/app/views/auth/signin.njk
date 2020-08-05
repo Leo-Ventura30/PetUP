@@ -1,11 +1,14 @@
-{% extends "layouts/default.njk" %} 
-{% block body %}
-<title>Login | PetUP team</title>
+{% extends "layouts/default.njk" %} {% block body %}
+<title>Login | PetUP</title>
+
 <form class="form-login" action="/signin" method="POST">
   <h1 class="text-log">
     <img class="dog-svg" src="img/pet.svg" />
     | Login
   </h1>
+  <div id="alert" class="alert" role="alert" onchange="{{ error }}">
+    <p>{{ error }}</p>
+  </div>
   <div class="form-input">
     <input type="text" name="user" id="user" required />
     <span data-placeholder="Usuário"></span>
@@ -19,13 +22,12 @@
   <label class="label-eye" for="showPass">Mostrar senha</label>
 
   <input type="submit" id="btn-log" class="btn-log" value="Login" />
-  <a href="/home">Criar uma conta?</a>
+  <a href="/signup">Criar uma conta?</a>
   <script
     charset="UTF-8"
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
   ></script>
 </form>
-
 <script>
   $(".form-input input").on("focus", function () {
     $(this).addClass("focus");
@@ -33,6 +35,28 @@
   $(".form-input input").on("blur", function () {
     if ($(this).val() == "") $(this).removeClass("focus");
   });
+
+  if (document.querySelector("#alert p").textContent) {
+    renderAlert();
+  } else {
+    var div = (document.querySelector("div #alert") = "");
+    var obj = (document.querySelector("#alert p").textContent = "");
+  }
+
+  function renderAlert() {
+    var div = document.querySelector("div #alert");
+    var obj = document.querySelector("#alert p").textContent;
+
+    div.style.textAlign = "center";
+    div.style.borderRadius = "10px";
+    div.style.marginBottom = "10px";
+    div.style.color = "#da1010";
+    div.style.padding = "1px";
+    div.style.backgroundColor = "#e7595981";
+    setTimeout((e) => {
+      return div.remove();
+    }, 2000);
+  }
 
   function viewPassword() {
     var x = document.getElementById("password");

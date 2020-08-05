@@ -1,0 +1,26 @@
+{% extends "layouts/dashboardmain.njk" %} {% block body %}
+<title>Home | PetUP</title>
+<section id="contentsection">
+  <div class="divcontent">
+    <div class="popup" id="popup-1">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="close-btn" onclick="togglePopup()">&times;</div>
+        <h2>Alterar foto de perfil</h2>
+        <form
+          action="/dashboard/home/uploadImage"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input id="avatar" name="avatar" type="file" />
+          <input onclick="togglePopup()" type="button" value="Cancelar" />
+          <input type="submit" value="Salvar" />
+        </form>
+      </div>
+    </div>
+    {% block body2 %}{% endblock %}
+    {% block body3 %}{% endblock %}
+  </div>
+</section>
+
+{% endblock %}

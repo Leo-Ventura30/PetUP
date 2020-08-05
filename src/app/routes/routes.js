@@ -2,15 +2,40 @@ const express = require("express");
 
 const routes = express.Router();
 
+const auth = require("../middleware/auth");
+const guest = require("../middleware/guest");
+
 const UserController = require("../controllers/UserController");
 const SessionController = require("../controllers/SessionController");
+const DashboardController = require("../controllers/DashboardController");
+const ScheduleController = require("../controllers/ScheduleController");
 
-routes.get("/home", UserController.load);
-routes.get("/dashboard/home", (req, res) => {
-  res.send("Dash");
-});
+const multerConfig = require("../../config/multer");
+
+const upload = require("multer")(multerConfig);
+
+routes.get("/", guest, UserController.load);
+
+routes.use("/signup", guest);
+routes.get("/signup", UserController.signup);
+routes.post("/signup/create", UserController.create);
 
 routes.post("/signin", SessionController.signin);
-// routes.post("/home/user", UserController.create);
+
+routes.use("/dashboard/", auth);
+
+routes.get("/dashboard/home", DashboardController.create);
+routes.get("/dashboard/home/schedulemain", SessionController.schedule);
+routes.get("/dashboard/home/schedules", ScheduleController.index);
+routes.get("/dashboard/home/schedules/:id", ScheduleController.details);
+
+routes.post("/dashboard/home/schedule", ScheduleController.create);
+routes.post(
+  "/dashboard/home/uploadImage",
+  upload.single("avatar"),
+  DashboardController.updateImage
+);
+
+routes.get("/dashboard/logout", SessionController.DestroyCookie);
 
 module.exports = routes;

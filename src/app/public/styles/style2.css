@@ -1,0 +1,390 @@
+* {
+  font-family: "Roboto Mono", monospace;
+}
+body {
+  margin: 0px;
+  height: auto;
+  background-color: #5555;
+  display: block;
+}
+li {
+  list-style-type: none;
+}
+
+.popup .overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+
+.popup .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #fff;
+  width: 500px;
+  height: 250px;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.popup .close-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  background: #222;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.popup.active .overlay {
+  display: block;
+}
+
+.popup.active .content {
+  transition: all 300ms ease-in-out;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #222;
+  color: #222;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: #fff;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  background-color: rgb(33, 33, 34);
+}
+.contentbuttonsmall div {
+  width: 100px;
+  height: 0;
+  transform: translate(-25px, 115px) scale(-1);
+  cursor: pointer;
+}
+.contentbuttonsmall div:hover {
+  transform: translate(-15px, 115px) scale(-1);
+}
+.contentbutton div {
+  width: 120px;
+  transform: translate(90px, -5px);
+  cursor: pointer;
+}
+.divbutton .contentbutton div:hover {
+  transform: translate(80px, -5px);
+}
+.navlateralsmall {
+  border-radius: 0px 10px 10px 0px;
+  width: 70px;
+  height: 99%;
+  background: linear-gradient(to left, #998e8e, #6a7a97);
+  position: absolute;
+  margin-top: -20px;
+}
+.navlateral {
+  border-radius: 0px 10px 10px 0px;
+  width: 200px;
+  height: auto;
+  background: linear-gradient(to left, #998e8e, #6a7a97);
+  position: absolute;
+  margin-top: -20px;
+}
+.content {
+  margin-left: 18px;
+}
+.imgcontentsmall label img:hover {
+  cursor: pointer;
+}
+.imgcontentsmall {
+  margin-left: -15px;
+  margin-top: 30px;
+  width: 65px;
+  height: 65px;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgcontentsmall img {
+  width: 55px;
+  height: 60px;
+  image-resolution: 700dpi;
+  border-radius: 50%;
+  border: 5px solid rgb(8, 97, 148);
+}
+.imgcontent label img:hover {
+  cursor: pointer;
+}
+.imgcontent {
+  margin-left: 7px;
+  margin-top: 35px;
+  width: 150px;
+  height: 150px;
+  border-radius: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgcontent img {
+  width: 140px;
+  height: 140px;
+  image-resolution: 700dpi;
+  border-radius: 50%;
+  border: 10px solid rgba(8, 124, 192, 0.616);
+}
+.namecontentsmall span {
+  visibility: hidden;
+  font-size: 14px;
+  opacity: 0.7;
+  width: 120px;
+  text-align: center;
+  background-color: black;
+  border-radius: 6px;
+  color: #bac6db;
+
+  position: absolute;
+  z-index: 1;
+}
+.namecontentsmall a {
+  margin-left: -5px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+.namecontentsmall a:hover span,
+.namecontentsmall a img:active,
+.namecontentsmall a img:hover {
+  visibility: visible;
+  transform: translateY(-3px);
+}
+.namecontentsmall img {
+  cursor: pointer;
+  margin-top: -10px;
+  width: 45px;
+  height: 45px;
+}
+
+.namecontent span {
+  visibility: hidden;
+  font-size: 14px;
+  opacity: 0.7;
+  width: 120px;
+  text-align: center;
+  background-color: black;
+  border-radius: 6px;
+  color: #bac6db;
+
+  position: absolute;
+  z-index: 1;
+}
+.namecontent {
+  margin-top: 10px;
+}
+
+.namecontent a {
+  margin-left: 50px;
+  text-decoration: none;
+}
+.namecontent a:hover span,
+.namecontent a img:active,
+.namecontent a img:hover {
+  visibility: visible;
+  transform: translateY(-3px);
+}
+.namecontent img {
+  cursor: pointer;
+  margin-top: px;
+  width: 40px;
+  height: 40px;
+}
+
+.namecontent .lbltext {
+  margin-left: 24px;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 15px;
+  width: 150px;
+  color: rgb(211, 210, 210);
+}
+.namecontent .lblname {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(221, 235, 98);
+  margin-left: 30px;
+  text-align: center;
+}
+.space {
+  border: 0;
+  height: 2px;
+  margin-left: -18px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(72, 96, 156, 0.473),
+    rgba(241, 249, 255, 0.856),
+    rgba(66, 88, 143, 0.473),
+    transparent
+  );
+}
+.spaceSmall {
+  border: 0;
+  height: 2px;
+  margin-left: 5px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(72, 96, 156, 0.473),
+    rgba(241, 249, 255, 0.856),
+    rgba(66, 88, 143, 0.473),
+    transparent
+  );
+}
+.contentsectionlarge {
+  border-radius: 10px 10px 10px 10px;
+  width: 95%;
+  height: 99%;
+  background: #998e8e;
+  margin-left: 75px;
+  margin-right: 7px;
+  margin-top: -20px;
+  position: absolute;
+}
+.contentsection {
+  border-radius: 10px 10px 10px 10px;
+  width: 86.8%;
+  height: 92%;
+  background: #998e8e;
+  margin-left: 205px;
+  margin-right: 7px;
+  margin-top: -20px;
+  position: absolute;
+}
+.div-list {
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.divcontent ul li {
+  flex-wrap: wrap;
+  border-radius: 15px;
+  width: 43.4%;
+  background-color: rgba(255, 255, 255, 0.575);
+}
+.optionscontentsmall ul {
+  width: 60px;
+  text-align: center;
+  margin-left: -53px;
+}
+
+.optionscontentsmall ul li {
+  margin-top: 25px;
+  margin-bottom: 5px;
+  transform: translateY(10px);
+  font-size: 18px;
+  font-weight: 200px;
+}
+.optionscontentsmall ul li span {
+  visibility: hidden;
+  font-size: 14px;
+  opacity: 0.7;
+  width: 120px;
+  padding: 0 5px 0 5px;
+  background-color: black;
+  border-radius: 6px;
+  color: #bac6db;
+
+  position: sticky;
+  z-index: 1;
+}
+.optionscontentsmall ul li:hover span,
+.optionscontentsmall ul li img:hover {
+  visibility: visible;
+  cursor: pointer;
+}
+.optionscontentsmall ul li:hover {
+  background-color: rgba(196, 227, 255, 0.582);
+  border-top: 2px solid rgba(196, 227, 255, 0.582);
+  border-bottom: 2px solid rgba(196, 227, 255, 0.582);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.optionscontentsmall ul li:hover + .spaceSmall {
+  background-color: rgba(129, 194, 255, 0.938);
+  scale: 1.2;
+  cursor: pointer;
+}
+
+.optionscontent ul {
+  width: 80px;
+  text-align: center;
+  margin-left: 10px;
+}
+.optionscontent ul li a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.optionscontent ul li {
+  color: rgb(7, 1, 65);
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  margin-left: -20px;
+  font-weight: 700px;
+}
+.optionscontent ul li span {
+  visibility: hidden;
+  font-size: 14px;
+  opacity: 0.7;
+  width: 120px;
+  background-color: black;
+  border-radius: 6px;
+  color: #bac6db;
+
+  position: absolute;
+  z-index: 1;
+}
+.optionscontent ul li:hover span,
+.optionscontent ul li img:hover,
+.optionscontent ul li label:hover {
+  cursor: pointer;
+  visibility: visible;
+}
+.optionscontent ul li:hover {
+  scale: 1.3;
+  width: 80px;
+  padding: 5px 10px;
+  background-color: rgba(196, 227, 255, 0.582);
+  border-top: 2px solid rgba(196, 227, 255, 0.582);
+  border-bottom: 2px solid rgba(196, 227, 255, 0.582);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.optionscontent ul li:hover + .space {
+  background-color: rgba(129, 194, 255, 0.938);
+  scale: 1.3;
+}
