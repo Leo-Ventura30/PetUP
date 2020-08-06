@@ -1,11 +1,14 @@
 {% extends "dashboard.njk" %} {% block body2 %}
-
+<head>
+  <title>Agenda | PetUP</title>
+</head>
 <ul>
   {% for schedule in sched %}
   <li>
     <div class="div-list">
-      <h1>Horário: {{ schedule.date.day }} - {{ schedule.date.hour }}</h1>
-      <h3>Valor: {{ schedule.value }}</h3>
+      <h1>Data: {{ schedule.date.day }}</h1>
+      <h1>Hora: {{ schedule.date.hour }}</h1>
+      <h3>Valor: R${{ schedule.value }}</h3>
       <h4>Status: {{ stats[schedule.status] }}</h4>
       <a href="/dashboard/home/schedules/{{ schedule.id }}">Detalhes</a>
     </div>

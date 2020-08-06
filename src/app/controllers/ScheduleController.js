@@ -4,16 +4,16 @@ const { Schedule } = require("../models");
 class ScheduleController {
   async create(req, res) {
     const { id } = req.session.people;
-    const { days, hour, ...body } = req.body;
-    const date = `${days} ${hour}`;
+    const { days, ...body } = req.body;
 
-    const newDate = moment(date, "DD/MM/YYYY hh:mm");
+    const newDate = moment(days, "DD/MM/YYYY hh:mm");
 
     await Schedule.create({
       date: newDate.toDate(),
       ...body,
       user_id: id,
     });
+
     return res.redirect("/dashboard/home");
   }
 
@@ -24,7 +24,7 @@ class ScheduleController {
       where: {
         user_id: id,
       },
-      order: [["date", "ASC"]],
+      order: [["date", "DESC"]],
     });
 
     const sched = schedules.map((a) => {
@@ -32,7 +32,7 @@ class ScheduleController {
         id: a.id,
         date: {
           day: moment(a.date).format("DD/MM/YYYY"),
-          hour: moment(a.date).format("hh:mm"),
+          hour: moment(a.date).format("HH:mm"),
         },
         location: a.location,
         type: a.type,

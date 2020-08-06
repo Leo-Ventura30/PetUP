@@ -1,4 +1,4 @@
-const { User, Schedule } = require("../models");
+const { User } = require("../models");
 
 class UserController {
   load(req, res) {

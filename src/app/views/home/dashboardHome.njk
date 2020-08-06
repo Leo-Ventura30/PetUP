@@ -1,3 +1,61 @@
-{% extends "dashboard.njk" %} {% block body2 %}
-
+{% extends "dashboard.njk" %} {% block homedash %}
+<head>
+  <title>Home | PetUP</title>
+</head>
+<div class="div-formSchedule">
+  <form action="/dashboard/home/schedule" method="post">
+    <div class="form-schedule">
+      <input
+        type="text"
+        class="flatpickr"
+        name="days"
+        placeholder="Selecione uma data"
+        required
+      />
+    </div>
+    <!-- <div class="form-schedule">
+      <input type="text" name="hour" id="hour" value="" required />
+    </div> -->
+    <div class="form-schedule">
+      <input
+        type="text"
+        name="location"
+        id="location"
+        placeholder="Endereço"
+        required
+      />
+    </div>
+    <div class="form-schedule">
+      <input
+        type="radio"
+        id="banho"
+        name="type"
+        value="banho e tosa"
+        required
+      />
+      <label for="banho">banho e tosa</label><br />
+      <input type="radio" id="tosa" name="type" value="tosa geral" />
+      <label for="tosa">tosa geral</label><br />
+      <input type="radio" id="tesoura" name="type" value="tosa na tesoura" />
+      <label for="tesoura">tosa na tesoura</label>
+    </div>
+    <div class="form-schedule">
+      <div class="slidecontainer">
+        <input
+          name="value"
+          type="range"
+          step="0.01"
+          min="0.01"
+          max="350.99"
+          class="slider"
+          id="myRange"
+          required
+        />
+        <p><label for="demo">R$</label> <span id="demo"></span></p>
+      </div>
+      <div class="div-button"><button type="submit">Agendar</button></div>
+    </div>
+  </form>
+</div>
+<script src="/scripts/assets.js"></script>
 {% endblock %}

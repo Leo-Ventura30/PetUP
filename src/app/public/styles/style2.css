@@ -3,7 +3,6 @@
 }
 body {
   margin: 0px;
-  height: auto;
   background-color: #5555;
   display: block;
 }
@@ -62,12 +61,7 @@ li {
   transform: translate(-50%, -50%) scale(1);
 }
 
-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 15px;
+.div-button button {
   font-size: 18px;
   border: 2px solid #222;
   color: #222;
@@ -266,7 +260,7 @@ button {
   );
 }
 .contentsectionlarge {
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
   width: 95%;
   height: 99%;
   background: #998e8e;
@@ -276,24 +270,64 @@ button {
   position: absolute;
 }
 .contentsection {
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
   width: 86.8%;
-  height: 92%;
+  min-height: 92%;
+  height: max-content;
   background: #998e8e;
   margin-left: 205px;
   margin-right: 7px;
   margin-top: -20px;
   position: absolute;
 }
+.form-schedule {
+  margin-top: 5px;
+  margin-left: 12%;
+}
+.form-schedule input[type="text"] {
+  width: 80%;
+}
+.div-formSchedule {
+  background: rgba(246, 246, 245, 0.486);
+  border-right: 5px solid rgb(59, 54, 54);
+  border-bottom: 5px solid rgb(59, 54, 54);
+  width: 43.4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  margin: 3%;
+  border-radius: 10px;
+}
+.div-formSchedule form {
+  margin: 5% 5% 5% 5%;
+  border-radius: 10px;
+  background: rgba(245, 236, 188, 0.534);
+  padding: 10%;
+  width: 50%;
+  border: 3px solid rgb(139, 154, 177);
+}
 .div-list {
+  padding: 5% 20% 5% 20%;
+  display: list-item;
+  justify-content: end;
+  align-items: center;
   border-radius: 10px;
   border: 1px solid black;
 }
-.divcontent ul li {
+
+.divcontent ul {
+  display: flex;
   flex-wrap: wrap;
+  margin: 10px;
+}
+.divcontent ul li {
+  font-size: 16px;
+  font-weight: 900;
+  margin: 0.4%;
   border-radius: 15px;
-  width: 43.4%;
-  background-color: rgba(255, 255, 255, 0.575);
+  width: 18.5%;
+  background-color: rgb(251, 255, 194);
 }
 .optionscontentsmall ul {
   width: 60px;

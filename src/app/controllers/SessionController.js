@@ -17,7 +17,7 @@ class SessionController {
     req.session.people = people;
     res.locals.people = people;
 
-    return res.redirect("/dashboard/home/schedulemain");
+    return res.redirect("/dashboard/home");
   }
   async schedule(req, res) {
     const { id } = req.session.people;

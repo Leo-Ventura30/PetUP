@@ -6,14 +6,14 @@ class DashboardController {
     let firstName = name.split(" ");
     res.locals.people.name = firstName[0];
 
-    return res.render("dashboard", { name: firstName[0], avatar });
+    return res.render("home/dashboardHome", { name: firstName[0], avatar });
   }
-  async index(req, res) {
-    const { id, name, avatar } = res.locals.people;
-    const date = await Schedule.findAll({ where: id });
-    console.log(date);
-    return res.render("dashboard", { name, avatar });
-  }
+  // async index(req, res) {
+  //   const { id, name, avatar } = res.locals.people;
+  //   const date = await Schedule.findAll({ where: id });
+  //   console.log(date);
+  //   return res.render("home/dashboardHome", { name, avatar });
+  // }
 
   async updateImage(req, res) {
     const { id, name } = res.locals.people;
@@ -23,7 +23,7 @@ class DashboardController {
 
     await User.update({ avatar }, { where: { id } });
 
-    return res.render("dashboard", { name, avatar });
+    return res.render("home/dashboardHome", { name, avatar });
   }
 }
 
