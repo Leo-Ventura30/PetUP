@@ -4,7 +4,7 @@ const session = require("express-session");
 // const FileStore = require("session-file-store")(session);
 const njk = require("nunjucks");
 const path = require("path");
-
+const routes = require("./app/routes/routes");
 const app = express();
 
 app.disable("x-powered-by");
@@ -36,6 +36,6 @@ app.use(express.static(path.resolve(__dirname, "app", "public")));
 //alteração do engine de view
 app.set("view engine", "njk");
 
-app.use(require("./app/routes/routes"));
+app.use("/", routes);
 
 module.exports = app;

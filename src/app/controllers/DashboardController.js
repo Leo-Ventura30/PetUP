@@ -40,11 +40,11 @@ class DashboardController {
   }
 
   async updateImage(req, res) {
-    const { id, name } = res.locals.people;
+    const { id, name, ...rest } = res.locals.people;
     const { filename: avatar } = req.file;
     res.locals.people.avatar = avatar;
     req.session.people.avatar = avatar;
-
+    console.log(rest);
     await User.update({ avatar }, { where: { id } });
 
     return res.render("home/dashboardHome", { name, avatar });
