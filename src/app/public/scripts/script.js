@@ -100,3 +100,55 @@ function removeLarge() {
   document.getElementById("contentbutton").classList.remove("contentbutton");
   document.getElementById("optionscontent").classList.remove("optionscontent");
 }
+var contentButton = document.querySelectorAll(".content-button");
+var contentButtonHome = document.querySelectorAll(".content-buttonHome");
+var buttonClose = document.querySelectorAll(".button-close a");
+var buttonCloseHome = document.querySelectorAll(".button-closeHome a");
+var imgStatus = document.querySelectorAll(".img-status");
+var imgStatusDash = document.querySelectorAll(".img-statusDash");
+var listSchedules = document.querySelectorAll("#list-schedule");
+var listDash = document.querySelectorAll(".content-li");
+var stats = document.querySelectorAll(".status-text label");
+var statsDash = document.querySelectorAll(".status-textDash label");
+const status = ["Fechado", "Aberto", "Remarcado"];
+
+for (var n = 0; n < listSchedules.length; n++) {
+  if (stats[n].innerHTML == status[0]) {
+    schedulesRender(n);
+  } else if (stats[n].innerHTML == status[1]) {
+    imgStatus[n].src = `/img/${status[1]}.svg`;
+  } else {
+    imgStatus[n].src = `/img/${status[2]}.svg`;
+  }
+}
+for (var n = 0; n < listDash.length; n++) {
+  if (statsDash[n].innerHTML == status[0]) {
+    dashboardRender(n);
+  } else if (statsDash[n].innerHTML == status[1]) {
+    imgStatusDash[n].src = `/img/${status[1]}.svg`;
+  } else {
+    imgStatusDash[n].src = `/img/${status[2]}.svg`;
+  }
+}
+
+function schedulesRender(n) {
+  imgStatus[n].src = `/img/${status[0]}.svg`;
+  contentButton[n].classList.add("isDisabled");
+  contentButton[n].style.cursor = "not-allowed";
+  buttonClose[n].style.cursor = "not-allowed";
+  buttonClose[n].href = "/closed";
+  buttonClose[n].addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+}
+
+function dashboardRender(n) {
+  imgStatusDash[n].src = `/img/${status[0]}.svg`;
+  contentButtonHome[n].classList.add("isDisabled");
+  contentButtonHome[n].style.cursor = "not-allowed";
+  buttonCloseHome[n].style.cursor = "not-allowed";
+  buttonCloseHome[n].href = "/closed";
+  buttonCloseHome[n].addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+}

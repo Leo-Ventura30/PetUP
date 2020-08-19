@@ -25,7 +25,6 @@ routes.post("/signin", SessionController.signin);
 routes.use("/dashboard/", auth);
 
 routes.get("/dashboard/home", DashboardController.create);
-routes.get("/dashboard/home/schedulemain", SessionController.schedule);
 routes.get("/dashboard/home/schedules", ScheduleController.index);
 routes.get("/dashboard/home/schedules/:id", ScheduleController.details);
 
@@ -37,5 +36,11 @@ routes.post(
 );
 
 routes.get("/dashboard/logout", SessionController.DestroyCookie);
+
+routes.get("/dashboard/home/pageSchedule");
+routes.get(
+  "/dashboard/home/schedules/:id/closed",
+  ScheduleController.closeSchedule
+);
 
 module.exports = routes;

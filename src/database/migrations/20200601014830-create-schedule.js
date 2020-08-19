@@ -13,6 +13,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      dog: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       location: {
         allowNull: true,
         type: Sequelize.STRING,

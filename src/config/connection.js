@@ -1,4 +1,4 @@
-const path = require("path");
+// const path = require("path");
 module.exports = {
   dialect: "postgres",
   host: "192.168.15.32",

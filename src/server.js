@@ -1,7 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 
-const FileStore = require("session-file-store")(session);
+// const FileStore = require("session-file-store")(session);
 const njk = require("nunjucks");
 const path = require("path");
 
@@ -11,18 +11,17 @@ app.disable("x-powered-by");
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(
-  session({
-    name: "root",
-    secret: "keyass",
-    resave: true,
-    logFn: () => {},
-    store: new FileStore({
-      path: path.resolve(__dirname, "tmp"),
-    }),
-    saveUninitialized: false,
-  })
-);
+// app.use(
+//   session({
+//     name: "root",
+//     secret: "keyass",
+//     resave: true,
+//     store: new FileStore({
+//       path: path.resolve(__dirname, "tmp"),
+//     }),
+//     saveUninitialized: true,
+//   })
+// );
 
 //configura da engine e o caminho padrão
 njk.configure(path.resolve(__dirname, "app", "views"), {

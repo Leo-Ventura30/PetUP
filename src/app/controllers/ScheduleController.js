@@ -1,6 +1,6 @@
 const moment = require("moment");
 const { Schedule } = require("../models");
-
+const stats = ["Fechado", "Aberto", "Remarcado"];
 class ScheduleController {
   async create(req, res) {
     const { id } = req.session.people;
@@ -40,7 +40,6 @@ class ScheduleController {
         status: a.status,
       };
     });
-    const stats = ["Fechado", "Aberto", "Remarcado"];
 
     return res.render("schedules/schedule", {
       sched,
@@ -68,8 +67,13 @@ class ScheduleController {
       value: value,
       status: status,
     };
-    const stats = ["Fechado", "Aberto", "Remarcado"];
+
     return res.render("schedules/details", { sched, name, avatar, stats });
+  }
+  async closeSchedule(req, res) {
+    const { id } = req.params;
+    await Schedule.update({ status: 0 }, { where: { id } });
+    return res.redirect("/dashboard/home");
   }
 }
 

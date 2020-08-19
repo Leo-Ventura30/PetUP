@@ -1,8 +1,7 @@
 flatpickr(".flatpickr", {
   minDate: new Date(),
-  locale: "br",
   enableTime: true,
-  dateFormat: "d/F/Y H:i",
+  dateFormat: "d/m/Y H:i",
   onChange: function (date) {
     fetch(`/dashboard/home/{{user.id}}/schedule?date=${date[0].getTime()}`);
   },

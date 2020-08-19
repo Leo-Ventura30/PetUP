@@ -1,19 +1,43 @@
 const { User, Schedule } = require("../models");
 const moment = require("moment");
+const { Op } = require("sequelize");
 class DashboardController {
   async create(req, res) {
-    const { name, avatar } = res.locals.people;
+    const { id, name, avatar } = res.locals.people;
     let firstName = name.split(" ");
     res.locals.people.name = firstName[0];
+    var actualDate = moment().toDate();
 
-    return res.render("home/dashboardHome", { name: firstName[0], avatar });
+    const schedules = await Schedule.findAll({
+      where: {
+        user_id: id,
+        date: { [Op.gte]: actualDate },
+        status: 1,
+      },
+      order: [["date", "ASC"]],
+    });
+    const sched = schedules.map((a) => {
+      return {
+        id: a.id,
+        date: {
+          day: moment(a.date).format("DD/MM/YYYY"),
+          hour: moment(a.date).format("HH:mm"),
+        },
+        location: a.location,
+        type: a.type,
+        value: a.value,
+        status: a.status,
+        dog: a.dog,
+      };
+    });
+    const stats = ["Fechado", "Aberto", "Remarcado"];
+    return res.render("home/dashboardHome", {
+      name: firstName[0],
+      avatar,
+      sched,
+      stats,
+    });
   }
-  // async index(req, res) {
-  //   const { id, name, avatar } = res.locals.people;
-  //   const date = await Schedule.findAll({ where: id });
-  //   console.log(date);
-  //   return res.render("home/dashboardHome", { name, avatar });
-  // }
 
   async updateImage(req, res) {
     const { id, name } = res.locals.people;

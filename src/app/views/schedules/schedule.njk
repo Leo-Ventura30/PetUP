@@ -2,18 +2,38 @@
 <head>
   <title>Agenda | PetUP</title>
 </head>
-<ul>
+
+<ul class="ul-schedules">
   {% for schedule in sched %}
-  <li>
-    <div class="div-list">
-      <h1>Data: {{ schedule.date.day }}</h1>
-      <h1>Hora: {{ schedule.date.hour }}</h1>
-      <h3>Valor: R${{ schedule.value }}</h3>
-      <h4>Status: {{ stats[schedule.status] }}</h4>
-      <a href="/dashboard/home/schedules/{{ schedule.id }}">Detalhes</a>
+  <li id="list-schedule">
+    <div class="content-list">
+      <div class="content-button">
+        <div class="button-close">
+          <a href="/dashboard/home/schedules/{{ schedule.id }}/closed">X</a>
+        </div>
+      </div>
+      <div class="div-list">
+        <h1>Data: {{ schedule.date.day }}</h1>
+        <h1>Hora: {{ schedule.date.hour }}</h1>
+        <h3>
+          Valor: R$<label class="label-money">{{ schedule.value }}</label>
+        </h3>
+        <h4>
+          Status:
+          <h4 class="status-text">
+            <img class="img-status" /><label>{{
+              stats[schedule.status]
+            }}</label>
+          </h4>
+        </h4>
+      </div>
+      <div class="div-detail">
+        <a href="/dashboard/home/schedules/{{ schedule.id }}">
+          <img class="lupa-detail" src="/img/lupa.svg" /> Detalhes</a
+        >
+      </div>
     </div>
   </li>
   {% endfor %}
 </ul>
-
 {% endblock %}

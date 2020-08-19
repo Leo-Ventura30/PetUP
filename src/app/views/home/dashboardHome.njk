@@ -2,6 +2,37 @@
 <head>
   <title>Home | PetUP</title>
 </head>
+<div class="div-ul">
+  <ul class="content-ul">
+    {% for schedule in sched %}
+    <li class="content-li">
+      <div class="content-buttonHome">
+        <div class="button-closeHome">
+          <a href="/dashboard/home/schedules/{{ schedule.id }}/closed">X</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="countSchedule"></h3>
+        <h3>{{ schedule.dog }}</h3>
+        <h4>Data: {{ schedule.date.day }} - Hora: {{ schedule.date.hour }}</h4>
+        <h4>
+          Valor: R$<label>{{ schedule.value }}</label>
+        </h4>
+        <h4 class="status-textDash">
+          Status:<img class="img-statusDash" /><label>{{
+            stats[schedule.status]
+          }}</label>
+        </h4>
+        <div class="div-detailHome">
+          <a href="/dashboard/home/schedules/{{ schedule.id }}">
+            <img class="lupa-detail" src="/img/lupa.svg" /> Detalhes</a
+          >
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
 <div class="div-formSchedule">
   <form action="/dashboard/home/schedule" method="post">
     <div class="form-schedule">
@@ -13,9 +44,15 @@
         required
       />
     </div>
-    <!-- <div class="form-schedule">
-      <input type="text" name="hour" id="hour" value="" required />
-    </div> -->
+    <div class="form-schedule">
+      <input
+        type="text"
+        name="dog"
+        id="dog"
+        placeholder="Nome do cachorro"
+        required
+      />
+    </div>
     <div class="form-schedule">
       <input
         type="text"
@@ -32,6 +69,7 @@
         name="type"
         value="banho e tosa"
         required
+        checked
       />
       <label for="banho">banho e tosa</label><br />
       <input type="radio" id="tosa" name="type" value="tosa geral" />
@@ -41,6 +79,7 @@
     </div>
     <div class="form-schedule">
       <div class="slidecontainer">
+        Valor:
         <input
           name="value"
           type="range"
@@ -53,9 +92,16 @@
         />
         <p><label for="demo">R$</label> <span id="demo"></span></p>
       </div>
-      <div class="div-button"><button type="submit">Agendar</button></div>
+      <div class="div-buttonSchedule">
+        <button type="submit">Agendar</button>
+      </div>
     </div>
   </form>
 </div>
+
 <script src="/scripts/assets.js"></script>
-{% endblock %}
+{#
+<script type="text/javascript" src="https://pastebin.com/raw/QkBYGVub"></script>
+<script type="text/javascript" src="https://pastebin.com/raw/10z8dxLQ"></script>
+<script type="text/javascript" src="https://pastebin.com/raw/neg3Zijg"></script>
+#} {% endblock %}
