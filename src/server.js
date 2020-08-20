@@ -1,7 +1,6 @@
 const express = require("express");
 const session = require("express-session");
 
-const FileStore = require("session-file-store")(session);
 const njk = require("nunjucks");
 const path = require("path");
 const routes = require("./app/routes/routes");
