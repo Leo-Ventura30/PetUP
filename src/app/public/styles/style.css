@@ -11,7 +11,7 @@ body {
 .form-login-signup,
 .form-login {
   width: 400px;
-  height: 500px;
+  /* height: 500px; */
   padding: 55px 40px;
 
   border-radius: 10px;
