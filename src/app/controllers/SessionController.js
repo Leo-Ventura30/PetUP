@@ -16,7 +16,6 @@ class SessionController {
 
     req.session.people = people;
     res.locals.people = people;
-
     return res.redirect("/dashboard/home");
   }
   DestroyCookie(req, res) {

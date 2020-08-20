@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 const stats = ["Fechado", "Aberto", "Remarcado"];
 class DashboardController {
   async create(req, res) {
-    const { id, name, avatar } = res.locals.people || req.session.people;
+    let { id, name, avatar } = req.session.people;
     let firstName = name.split(" ");
     res.locals.people.name = firstName[0];
     var actualDate = moment().toDate();
@@ -43,6 +43,7 @@ class DashboardController {
   async updateImage(req, res) {
     const { id, name } = res.locals.people;
     const { filename: avatar } = req.file;
+    console.log(req.file);
     res.locals.people.avatar = avatar;
     req.session.people.avatar = avatar;
     await User.update({ avatar }, { where: { id } });

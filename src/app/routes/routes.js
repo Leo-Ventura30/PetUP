@@ -18,7 +18,7 @@ routes.get("/", guest, UserController.load);
 
 routes.use("/signup", guest);
 routes.get("/signup", UserController.signup);
-routes.post("/signup/create", UserController.create);
+routes.post("/signup/create", upload.single("avatar"), UserController.create);
 
 routes.post("/signin", SessionController.signin);
 

@@ -1,11 +1,14 @@
 {% extends "layouts/default.njk" %} {% block body %}
 <title>Cadastro | PetUP</title>
 <div class="div-signup">
-  <form class="form-login-signup" action="/signup/create" method="POST">
+  <form class="form-login-signup" action="/signup/create" method="POST" enctype="multipart/form-data">
     <h1 class="text-log">
       <img class="dog-svg" src="img/pet.svg" />
       | Cadastro
     </h1>
+    <div class="form-input-avatar">
+      <input id="avatar" name="avatar" type="file" />
+    </div>
     <div class="form-input">
       <input type="text" name="name" id="name" required />
       <span data-placeholder="Nome"></span>

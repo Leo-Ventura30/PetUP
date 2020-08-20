@@ -9,6 +9,7 @@ class UserController {
   }
   async create(req, res) {
     const { user } = req.body;
+    console.log(req.file);
     const people = await User.findOne({ where: { user } });
     if (people) {
       return res.redirect("/signup");
