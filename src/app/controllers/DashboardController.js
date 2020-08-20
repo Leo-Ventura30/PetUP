@@ -1,9 +1,10 @@
 const { User, Schedule } = require("../models");
 const moment = require("moment");
 const { Op } = require("sequelize");
+const stats = ["Fechado", "Aberto", "Remarcado"];
 class DashboardController {
   async create(req, res) {
-    const { id, name, avatar } = res.locals.people;
+    const { id, name, avatar } = res.locals.people || req.session.people;
     let firstName = name.split(" ");
     res.locals.people.name = firstName[0];
     var actualDate = moment().toDate();
@@ -30,7 +31,7 @@ class DashboardController {
         dog: a.dog,
       };
     });
-    const stats = ["Fechado", "Aberto", "Remarcado"];
+
     return res.render("home/dashboardHome", {
       name: firstName[0],
       avatar,
@@ -40,14 +41,44 @@ class DashboardController {
   }
 
   async updateImage(req, res) {
-    const { id, name, ...rest } = res.locals.people;
+    const { id, name } = res.locals.people;
     const { filename: avatar } = req.file;
     res.locals.people.avatar = avatar;
     req.session.people.avatar = avatar;
-    console.log(rest);
     await User.update({ avatar }, { where: { id } });
+    let firstName = name.split(" ");
+    res.locals.people.name = firstName[0];
+    var actualDate = moment().toDate();
 
-    return res.render("home/dashboardHome", { name, avatar });
+    const schedules = await Schedule.findAll({
+      where: {
+        user_id: id,
+        date: { [Op.gte]: actualDate },
+        status: 1,
+      },
+      order: [["date", "ASC"]],
+    });
+    const sched = schedules.map((a) => {
+      return {
+        id: a.id,
+        date: {
+          day: moment(a.date).format("DD/MM/YYYY"),
+          hour: moment(a.date).format("HH:mm"),
+        },
+        location: a.location,
+        type: a.type,
+        value: a.value,
+        status: a.status,
+        dog: a.dog,
+      };
+    });
+
+    return res.render("home/dashboardHome", {
+      name: firstName[0],
+      avatar,
+      sched,
+      stats,
+    });
   }
 }
 

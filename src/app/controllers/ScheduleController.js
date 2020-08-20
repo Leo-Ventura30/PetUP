@@ -1,6 +1,7 @@
 const moment = require("moment");
 const { Schedule } = require("../models");
 const stats = ["Fechado", "Aberto", "Remarcado"];
+
 class ScheduleController {
   async create(req, res) {
     const { id } = req.session.people;
@@ -18,8 +19,7 @@ class ScheduleController {
   }
 
   async index(req, res) {
-    const { id } = res.locals.people;
-    const { name, avatar } = res.locals.people;
+    const { id, name, avatar } = res.locals.people;
     const schedules = await Schedule.findAll({
       where: {
         user_id: id,

@@ -1,27 +1,33 @@
 const express = require("express");
 const session = require("express-session");
 
-// const FileStore = require("session-file-store")(session);
+const FileStore = require("session-file-store")(session);
 const njk = require("nunjucks");
 const path = require("path");
 const routes = require("./app/routes/routes");
 const app = express();
-
+var memjs = require("memjs");
+var memCachedStore = require("connect-memjs")(session);
 app.disable("x-powered-by");
 
 app.use(express.urlencoded({ extended: false }));
 
-// app.use(
-//   session({
-//     name: "root",
-//     secret: "keyass",
-//     resave: true,
-//     store: new FileStore({
-//       path: path.resolve(__dirname, "tmp"),
-//     }),
-//     saveUninitialized: true,
-//   })
-// );
+memjs.Client.create(process.env.MEMCACHIER_SERVERS, {
+  failover: true,
+  timeOut: 1,
+  keepAlive: true,
+});
+app.use(
+  session({
+    secret: "MyPetUP-Session-generate",
+    resave: false,
+    store: new memCachedStore({
+      servers: [process.env.MEMCACHIER_SERVERS],
+      prefix: "_session_",
+    }),
+    saveUninitialized: false,
+  })
+);
 
 //configura da engine e o caminho padrão
 njk.configure(path.resolve(__dirname, "app", "views"), {
