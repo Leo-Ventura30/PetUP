@@ -1,5 +1,10 @@
+// const path = require("path");
 module.exports = {
-  url: process.env.DATABASE_URL,
+  dialect: "postgres",
+  host: "192.168.15.32",
+  username: "postgres",
+  password: "2585Leo",
+  database: "postgres",
   operatorAliases: false,
   define: {
     timestamps: true,
